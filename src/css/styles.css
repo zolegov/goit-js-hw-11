@@ -23,3 +23,23 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+.form-btn {
+  background-color: #4e75ff;
+  border: none;
+  padding: 10px 16px;
+  color: #fff;
+  border-radius: 8px;
+}
+.form-input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #808080;
+  outline: transparent;
+  width: 272px;
+}
+.form {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
