@@ -1,8 +1,40 @@
-export function fetchForm() {
-  const form = document.querySelector('.form');
+import { renderImage } from '../js/render-functions';
 
-  form.addEventListener('submit', () => {
-    const resp = fetch('https://pixabay.com/api/');
-    console.log('resp: ', resp);
+export function fetchImage(inputValue) {
+  const APIKEY = '43173042-04092544e8d4f8f0c3df25e51';
+  const searchParams = new URLSearchParams({
+    orientation: 'horizontal',
+    image_type: 'photo',
+    safesearch: true,
+    per_page: 150,
   });
+
+  const loader = document.querySelector('.loader');
+  loader.style.display = 'block';
+  fetch(
+    `https://pixabay.com/api/?key=${APIKEY}&q=${inputValue}&${searchParams}`
+  )
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      loader.style.display = 'none';
+
+      return response.json();
+    })
+    .then(data => {
+      const results = data.hits;
+      if (results.length === 0) {
+        iziToast.warning({
+          title: 'Error',
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+        });
+      }
+      renderImage(results);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
