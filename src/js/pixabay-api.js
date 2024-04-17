@@ -1,7 +1,8 @@
-import { renderImage } from '../js/render-functions';
 import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
+import { renderImage } from '../js/render-functions';
+
 export function fetchImage(inputValue) {
   const APIKEY = '43173042-04092544e8d4f8f0c3df25e51';
   const searchParams = new URLSearchParams({
@@ -27,7 +28,7 @@ export function fetchImage(inputValue) {
     .then(data => {
       const results = data.hits;
       if (results.length === 0) {
-        iziToast.warning({
+        iziToast.error({
           title: 'Error',
           message:
             'Sorry, there are no images matching your search query. Please try again!',
