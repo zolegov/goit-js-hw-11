@@ -1,5 +1,7 @@
 import { renderImage } from '../js/render-functions';
-
+import iziToast from 'izitoast';
+// Додатковий імпорт стилів
+import 'izitoast/dist/css/iziToast.min.css';
 export function fetchImage(inputValue) {
   const APIKEY = '43173042-04092544e8d4f8f0c3df25e51';
   const searchParams = new URLSearchParams({
