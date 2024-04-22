@@ -2,10 +2,9 @@
 import SimpleLightbox from 'simplelightbox';
 // Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
+let gallery = new SimpleLightbox('.gallery a');
+const imagesFetch = document.querySelector('.imagesFetch');
 export function renderImage(results) {
-  const imagesFetch = document.querySelector('.imagesFetch');
-
   const markup = results.reduce((html, result) => {
     return (html += `
           <li class="imagesFetch-item">
@@ -37,6 +36,6 @@ export function renderImage(results) {
           </li>  `);
   }, '');
   imagesFetch.insertAdjacentHTML('beforeend', markup);
-  let gallery = new SimpleLightbox('.gallery a');
+
   gallery.refresh();
 }
